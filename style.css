@@ -1,0 +1,57 @@
+/* Set the base style for the whole page. */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+/* Style the main application container. */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the page title. */
+h1 {
+  text-align: center;
+  margin: 24px 0;
+}
+
+/* Create the main layout area. */
+.main-content {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* Create the area where anime cards will be displayed later. */
+.anime-grid {
+  flex: 1;
+  min-height: 400px;
+  background-color: #ffffff;
+  border: 2px dashed #cccccc;
+}
+
+/* Style the side details panel. */
+.details-panel {
+  width: 300px;
+  min-height: 400px;
+  background-color: #ffffff;
+  border: 2px dashed #999999;
+}
+
+/* Hide elements when needed. */
+.hidden {
+  display: none;
+}
+
+/* Style the footer. */
+footer {
+  text-align: center;
+  padding: 16px;
+  background-color: #222;
+  color: #ffffff;
+}
