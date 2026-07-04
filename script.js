@@ -52,19 +52,21 @@ const apiUrl = "https://api.jikan.moe/v4/top/anime";
 function displayAnimeList(animeList) {
   animeList.forEach(function(anime) {
     const animeCard = document.createElement("article");
-animeCard.classList.add("anime-card");
+    animeCard.classList.add("anime-card");
 
-const animeImage = document.createElement("img");
-animeImage.src = anime.images.jpg.image_url;
-animeImage.alt = anime.title;
+    const animeImage = document.createElement("img");
+    animeImage.src = anime.images.jpg.image_url;
+    animeImage.alt = anime.title;
 
-const animeTitle = document.createElement("h2");
-animeTitle.textContent = anime.title;
+    const animeTitle = document.createElement("h2");
+    animeTitle.textContent = anime.title;
 
-animeCard.appendChild(animeImage);
-animeCard.appendChild(animeTitle);
+    animeCard.appendChild(animeImage);
+    animeCard.appendChild(animeTitle);
 
-animeGrid.appendChild(animeCard);
+    animeGrid.appendChild(animeCard);
+  });
+}
 
 // Get the anime data from the API.
 fetch(apiUrl)
