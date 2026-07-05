@@ -85,6 +85,32 @@ function showAnimeDetails(anime) {
   const detailsRating = document.createElement("p");
   detailsRating.textContent = `Rating: ${anime.rating || "Not available"}`;
 
+  // Create a text with all genre names separated by commas.
+  // Cria um texto com todos os nomes dos géneros separados por vírgulas.
+  const genreNames = anime.genres.map(function(genre) {
+    return genre.name;
+  }).join(", ");
+
+  // Show the anime genres provided by the API.
+  // Mostra os géneros do anime fornecidos pela API.
+  const detailsGenres = document.createElement("p");
+  detailsGenres.textContent = `Genres: ${genreNames || "Not available"}`;
+
+  // Show the anime type, such as TV, Movie, OVA, or Special.
+  // Mostra o tipo do anime, como TV, Movie, OVA ou Special.
+  const detailsType = document.createElement("p");
+  detailsType.textContent = `Type: ${anime.type || "Not available"}`;
+
+  // Show the number of episodes when this information exists in the API response.
+  // Mostra o número de episódios quando esta informação existe na resposta da API.
+  const detailsEpisodes = document.createElement("p");
+  detailsEpisodes.textContent = `Episodes: ${anime.episodes || "Not available"}`;
+
+  // Show the current release status of the anime.
+  // Mostra o estado atual de lançamento do anime.
+  const detailsStatus = document.createElement("p");
+  detailsStatus.textContent = `Status: ${anime.status || "Not available"}`;
+
   // Show the release date. If the API does not provide a date, show a fallback message.
   // Mostra a data de lançamento. Se a API não fornecer uma data, mostra uma mensagem alternativa.
   const detailsReleaseDate = document.createElement("p");
@@ -94,6 +120,10 @@ function showAnimeDetails(anime) {
   detailsPanel.appendChild(detailsScore);
   detailsPanel.appendChild(detailsRating);
   detailsPanel.appendChild(detailsReleaseDate);
+  detailsPanel.appendChild(detailsGenres);
+  detailsPanel.appendChild(detailsType);
+  detailsPanel.appendChild(detailsEpisodes);
+  detailsPanel.appendChild(detailsStatus);
 }
 
 // Receive the filtered anime list and create one visual card for each anime.
