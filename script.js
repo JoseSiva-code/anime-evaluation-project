@@ -111,6 +111,12 @@ function showAnimeDetails(anime) {
   const detailsStatus = document.createElement("p");
   detailsStatus.textContent = `Status: ${anime.status || "Not available"}`;
 
+  // Show a short description of the anime story when the API provides one.
+  // Mostra uma pequena descrição da história do anime quando a API fornece essa informação.
+  const detailsSynopsis = document.createElement("p");
+  detailsSynopsis.classList.add("synopsis");
+  detailsSynopsis.textContent = `Synopsis: ${anime.synopsis || "Not available"}`;
+
   // Show the release date. If the API does not provide a date, show a fallback message.
   // Mostra a data de lançamento. Se a API não fornecer uma data, mostra uma mensagem alternativa.
   const detailsReleaseDate = document.createElement("p");
@@ -124,6 +130,7 @@ function showAnimeDetails(anime) {
   detailsPanel.appendChild(detailsType);
   detailsPanel.appendChild(detailsEpisodes);
   detailsPanel.appendChild(detailsStatus);
+  detailsPanel.appendChild(detailsSynopsis);
 }
 
 // Receive the filtered anime list and create one visual card for each anime.
@@ -144,6 +151,18 @@ function displayAnimeList(animeList) {
     // When the image is clicked, show the details of that anime.
     // Quando a imagem for clicada, mostra os detalhes desse anime.
     animeImage.addEventListener("click", function() {
+      // Remove the selected style from any card that was previously clicked.
+      // Remove o estilo de seleção de qualquer card que tenha sido clicado antes.
+      const selectedCard = document.querySelector(".anime-card.selected");
+
+      if (selectedCard) {
+        selectedCard.classList.remove("selected");
+      }
+
+      // Add the selected style to the card that belongs to the clicked image.
+      // Adiciona o estilo de seleção ao card que pertence à imagem clicada.
+      animeCard.classList.add("selected");
+
       showAnimeDetails(anime);
     });
 

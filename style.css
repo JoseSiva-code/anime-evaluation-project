@@ -106,6 +106,13 @@ footer {
   color: #222;
 }
 
+/* Highlight the card that belongs to the currently selected anime without changing its size. */
+/* Destaca o card que pertence ao anime selecionado sem alterar o seu tamanho. */
+.anime-card.selected {
+  outline: 3px solid #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
 /* Add spacing to each detail line inside the side panel. */
 /* Adiciona espaçamento a cada linha de detalhe dentro do painel lateral. */
 .details-panel p {
@@ -119,4 +126,11 @@ footer {
   margin-top: 0;
   margin-bottom: 16px;
   font-size: 20px;
+}
+
+/* Style the synopsis text so longer descriptions are easier to read. */
+/* Estiliza o texto da sinopse para descrições maiores ficarem mais fáceis de ler. */
+.synopsis {
+  font-size: 14px;
+  line-height: 1.5;
 }
