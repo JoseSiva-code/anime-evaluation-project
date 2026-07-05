@@ -1,4 +1,5 @@
-/* Set the base style for the whole page. */
+/* Set the base style for the whole page, removing default browser spacing and defining the main font. */
+/* Define o estilo base da página, removendo o espaçamento padrão do browser e definindo a fonte principal. */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,20 +7,23 @@ body {
   color: #222;
 }
 
-/* Style the main application container. */
+/* Make the application fill the full browser height and organize its children vertically. */
+/* Faz a aplicação ocupar toda a altura do browser e organiza os elementos filhos na vertical. */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Style the page title. */
+/* Center the main page title and add vertical spacing around it. */
+/* Centra o título principal da página e adiciona espaçamento vertical à sua volta. */
 h1 {
   text-align: center;
   margin: 24px 0;
 }
 
-/* Create the main layout area. */
+/* Create the main layout area that holds the anime grid and the side details panel. */
+/* Cria a área principal de layout que contém a grelha dos animes e o painel lateral de detalhes. */
 .main-content {
   flex: 1;
   display: flex;
@@ -27,8 +31,8 @@ h1 {
   padding: 24px;
 }
 
-/* Create the area where anime cards will be displayed. */
-/* Cria a área onde os cards dos animes serão mostrados. */
+/* Create a responsive grid where anime cards are automatically arranged in columns. */
+/* Cria uma grelha responsiva onde os cards dos animes são organizados automaticamente em colunas. */
 .anime-grid {
   flex: 1;
   display: grid;
@@ -38,7 +42,8 @@ h1 {
   background-color: #ffffff;
 }
 
-/* Style the side details panel. */
+/* Style the side panel that appears when the user selects an anime image. */
+/* Estiliza o painel lateral que aparece quando o utilizador seleciona a imagem de um anime. */
 .details-panel {
   width: 300px;
   min-height: 400px;
@@ -46,12 +51,14 @@ h1 {
   border: 2px dashed #999999;
 }
 
-/* Hide elements when needed. */
+/* Hide elements that should only appear after a user action. */
+/* Esconde elementos que só devem aparecer depois de uma ação do utilizador. */
 .hidden {
   display: none;
 }
 
-/* Style the footer. */
+/* Style the footer so the copyright sentence is visually separated from the main content. */
+/* Estiliza o rodapé para separar visualmente a frase de copyright do conteúdo principal. */
 footer {
   text-align: center;
   padding: 16px;
@@ -59,8 +66,8 @@ footer {
   color: #ffffff;
 }
 
-/* Style each anime card. */
-/* Estiliza cada card de anime. */
+/* Style each anime card as a small visual block containing an image and title. */
+/* Estiliza cada card de anime como um pequeno bloco visual com imagem e título. */
 .anime-card {
   background-color: #f9f9f9;
   border: 1px solid #dddddd;
@@ -68,8 +75,8 @@ footer {
   text-align: center;
 }
 
-/* Style the anime image inside each card. */
-/* Estiliza a imagem do anime dentro de cada card. */
+/* Make every anime image fill the card width while keeping a consistent height. */
+/* Faz cada imagem de anime ocupar a largura do card mantendo uma altura consistente. */
 .anime-card img {
   width: 100%;
   height: 260px;
@@ -77,8 +84,8 @@ footer {
   display: block;
 }
 
-/* Style the anime title inside each card. */
-/* Estiliza o título do anime dentro de cada card. */
+/* Style the anime title so it fits neatly below the image. */
+/* Estiliza o título do anime para ficar bem encaixado por baixo da imagem. */
 .anime-card h2 {
   font-size: 16px;
   padding: 12px;
