@@ -7,14 +7,32 @@ app.classList.add("app");
 // Adiciona o contentor principal ao body para que ele fique visível no browser.
 document.body.appendChild(app);
 
-// Create the main page title that identifies the project to the user.
-// Cria o título principal da página, que identifica o projeto para o utilizador.
+// Create the header area that holds the samurai image and the main title.
+// Cria a área de cabeçalho que contém a imagem do samurai e o título principal.
+const header = document.createElement("header");
+header.classList.add("page-header");
+
+// Create the samurai image used as a decorative visual beside the title.
+// Cria a imagem do samurai usada como elemento visual decorativo ao lado do título.
+const samuraiImage = document.createElement("img");
+samuraiImage.src = "assets/samurai-anime.png";
+samuraiImage.alt = "Black and gold samurai armor";
+samuraiImage.classList.add("samurai-image");
+
 const title = document.createElement("h1");
 title.textContent = "Top Anime";
 
-// Place the title inside the main application container.
-// Coloca o título dentro do contentor principal da aplicação.
-app.appendChild(title);
+// Create a wrapper around the samurai image so we can add a floor shadow with CSS.
+// Cria um contentor à volta da imagem do samurai para podermos adicionar uma sombra no chão com CSS.
+const samuraiWrapper = document.createElement("div");
+samuraiWrapper.classList.add("samurai-wrapper");
+
+samuraiWrapper.appendChild(samuraiImage);
+
+header.appendChild(title);
+header.appendChild(samuraiWrapper);
+
+app.appendChild(header);
 
 // Create the main content area. This will hold the anime grid and the details panel.
 // Cria a área principal de conteúdo. Aqui ficam a grelha dos animes e o painel de detalhes.
@@ -115,7 +133,15 @@ function showAnimeDetails(anime) {
   // Mostra uma pequena descrição da história do anime quando a API fornece essa informação.
   const detailsSynopsis = document.createElement("p");
   detailsSynopsis.classList.add("synopsis");
-  detailsSynopsis.textContent = `Synopsis: ${anime.synopsis || "Not available"}`;
+
+  const synopsisLabel = document.createElement("strong");
+  synopsisLabel.textContent = "Synopsis: ";
+
+  const synopsisText = document.createElement("span");
+  synopsisText.textContent = anime.synopsis || "Not available";
+
+  detailsSynopsis.appendChild(synopsisLabel);
+  detailsSynopsis.appendChild(synopsisText);
 
   // Show the release date. If the API does not provide a date, show a fallback message.
   // Mostra a data de lançamento. Se a API não fornecer uma data, mostra uma mensagem alternativa.

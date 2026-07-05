@@ -1,10 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Shojumaru&display=swap");
+
+/* Place the title and samurai on the same visual floor line. */
+/* Coloca o título e o samurai na mesma linha visual de apoio. */
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  margin: 24px 0 70px;
+}
+
+/* Create a positioned area so the samurai can stand on a fake floor shadow. */
+/* Cria uma área posicionada para o samurai ficar assente numa sombra falsa no chão. */
+.samurai-wrapper {
+  position: relative;
+  width: 118px;
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Add a floor shadow directly below the samurai's feet. */
+/* Adiciona uma sombra de chão diretamente por baixo dos pés do samurai. */
+.samurai-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 100px;
+  height: 20px;
+  background-color: rgba(31, 26, 23, 0.7);
+  border-radius: 50%;
+  transform: translateX(-50%) skewX(-18deg);
+  filter: blur(5px);
+  z-index: 0;
+}
+
+/* Keep the samurai above the floor shadow and add a subtle movement so it feels less static. */
+/* Mantém o samurai por cima da sombra de chão e adiciona um movimento suave para parecer menos estático. */
+.samurai-image {
+  width: 118px;
+  height: 118px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  animation: samuraiBreathing 3s ease-in-out infinite;
+}
+
+/* Create a subtle breathing movement without making the samurai float. */
+/* Cria um movimento subtil de respiração sem fazer o samurai parecer que está a planar. */
+@keyframes samuraiBreathing {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+
+  50% {
+    transform: scaleX(1.01) scaleY(1.015);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
 /* Set the base style for the whole page, removing default browser spacing and defining the main font. */
 /* Define o estilo base da página, removendo o espaçamento padrão do browser e definindo a fonte principal. */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f4efe6;
+  background-image:
+    repeating-conic-gradient(
+      from -18deg at 50% 28%,
+      rgba(31, 26, 23, 0.08) 0deg,
+      rgba(31, 26, 23, 0.08) 1deg,
+      transparent 1deg,
+      transparent 10deg,
+      rgba(31, 26, 23, 0.08) 10deg,
+      rgba(31, 26, 23, 0.08) 11deg,
+      transparent 11deg,
+      transparent 20deg
+    ),
+    repeating-conic-gradient(
+      from -18deg at 50% 28%,
+      rgba(160, 35, 25, 0.16) 0deg,
+      rgba(160, 35, 25, 0.16) 10deg,
+      transparent 10deg,
+      transparent 20deg
+  );
   color: #222;
+  cursor: url("assets/katana-cursor.png") 58 4, auto;
 }
 
 /* Make the application fill the full browser height and organize its children vertically. */
@@ -15,11 +101,15 @@ body {
   flex-direction: column;
 }
 
-/* Center the main page title and add vertical spacing around it. */
-/* Centra o título principal da página e adiciona espaçamento vertical à sua volta. */
+/* Style the main title with the same samurai-inspired font used in the anime titles. */
+/* Estiliza o título principal com a mesma fonte inspirada em samurai usada nos títulos dos animes. */
 h1 {
   text-align: center;
-  margin: 24px 0;
+  margin:0;
+  font-family: "Shojumaru", Arial, sans-serif;
+  font-size: 56px;
+  color: #1f1a17;
+  text-shadow: 4px 4px 0 #d8c7ad;
 }
 
 /* Create the main layout area that holds the anime grid and the side details panel. */
@@ -39,7 +129,7 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #eee3d2;
 }
 
 /* Keep the details panel visible while the user scrolls through the anime grid. */
@@ -49,8 +139,8 @@ h1 {
   min-height: 400px;
   max-height: 80vh;
   padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: #f3eadc;
+  border: 1px solid #d8c7ad;
   position: sticky;
   top: 24px;
   overflow-y: auto;
@@ -89,21 +179,22 @@ footer {
   height: 260px;
   object-fit: cover;
   display: block;
-  cursor: pointer;
+  cursor: url("assets/katana-cursor-red.png") 58 4, pointer;
 }
 
 /* Place the anime title outside the image, above it, while keeping it inside the same card. */
 /* Coloca o título do anime fora da imagem, por cima dela, mantendo-o dentro do mesmo card. */
 .anime-card h2 {
-  font-size: 16px;
+  font-family: "Shojumaru", Arial, sans-serif;
+  font-size: 15px;
   padding: 12px;
   margin: 0;
-  min-height: 48px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
-  color: #222;
+  background-color: #1f1a17;
+  color: #f8efe2;
 }
 
 /* Highlight the card that belongs to the currently selected anime without changing its size. */
@@ -113,24 +204,39 @@ footer {
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
-/* Add spacing to each detail line inside the side panel. */
-/* Adiciona espaçamento a cada linha de detalhe dentro do painel lateral. */
 .details-panel p {
   margin: 10px 0;
+  padding: 10px 12px;
   line-height: 1.4;
+  background-color: #faf7f0;
+  border: 1px solid #e6dccb;
 }
 
-/* Make the selected anime title inside the panel easier to read. */
-/* Torna o título do anime selecionado dentro do painel mais fácil de ler. */
+/* Style the selected anime title in the details panel with the same samurai-inspired font. */
+/* Estiliza o título do anime selecionado no painel com a mesma fonte inspirada em samurai. */
 .details-panel h2 {
   margin-top: 0;
   margin-bottom: 16px;
-  font-size: 20px;
+  font-family: "Shojumaru", Arial, sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #1f1a17;
 }
 
-/* Style the synopsis text so longer descriptions are easier to read. */
-/* Estiliza o texto da sinopse para descrições maiores ficarem mais fáceis de ler. */
+/* Style the synopsis text with a samurai-inspired display font. */
+/* Estiliza o texto da sinopse com uma fonte visual inspirada em estilo samurai. */
 .synopsis {
+  font-family: "Shojumaru", Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.7;
+  color: #666666;
+}
+
+/* Make only the synopsis label stronger and darker than the rest of the text. */
+/* Torna apenas a palavra Synopsis mais forte e escura do que o resto do texto. */
+.synopsis strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 17px;
+  color: #000000;
 }
