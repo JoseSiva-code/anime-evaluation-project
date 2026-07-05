@@ -27,12 +27,15 @@ h1 {
   padding: 24px;
 }
 
-/* Create the area where anime cards will be displayed later. */
+/* Create the area where anime cards will be displayed. */
+/* Cria a área onde os cards dos animes serão mostrados. */
 .anime-grid {
   flex: 1;
-  min-height: 400px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
   background-color: #ffffff;
-  border: 2px dashed #cccccc;
 }
 
 /* Style the side details panel. */
@@ -54,4 +57,30 @@ footer {
   padding: 16px;
   background-color: #222;
   color: #ffffff;
+}
+
+/* Style each anime card. */
+/* Estiliza cada card de anime. */
+.anime-card {
+  background-color: #f9f9f9;
+  border: 1px solid #dddddd;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Style the anime image inside each card. */
+/* Estiliza a imagem do anime dentro de cada card. */
+.anime-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Style the anime title inside each card. */
+/* Estiliza o título do anime dentro de cada card. */
+.anime-card h2 {
+  font-size: 16px;
+  padding: 12px;
+  margin: 0;
 }
