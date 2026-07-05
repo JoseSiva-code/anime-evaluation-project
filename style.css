@@ -42,13 +42,18 @@ h1 {
   background-color: #ffffff;
 }
 
-/* Style the side panel that appears when the user selects an anime image. */
-/* Estiliza o painel lateral que aparece quando o utilizador seleciona a imagem de um anime. */
+/* Keep the details panel visible while the user scrolls through the anime grid. */
+/* Mantém o painel de detalhes visível enquanto o utilizador faz scroll pela grelha de animes. */
 .details-panel {
   width: 300px;
   min-height: 400px;
+  max-height: 80vh;
+  padding: 20px;
   background-color: #ffffff;
-  border: 2px dashed #999999;
+  border: 1px solid #dddddd;
+  position: sticky;
+  top: 24px;
+  overflow-y: auto;
 }
 
 /* Hide elements that should only appear after a user action. */
@@ -66,13 +71,15 @@ footer {
   color: #ffffff;
 }
 
-/* Style each anime card as a small visual block containing an image and title. */
-/* Estiliza cada card de anime como um pequeno bloco visual com imagem e título. */
+/* Style each anime card as one visual block with the title and image grouped together. */
+/* Estiliza cada card como um bloco visual com o título e a imagem agrupados. */
 .anime-card {
   background-color: #f9f9f9;
   border: 1px solid #dddddd;
   overflow: hidden;
   text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /* Make every anime image fill the card width while keeping a consistent height. */
@@ -82,12 +89,34 @@ footer {
   height: 260px;
   object-fit: cover;
   display: block;
+  cursor: pointer;
 }
 
-/* Style the anime title so it fits neatly below the image. */
-/* Estiliza o título do anime para ficar bem encaixado por baixo da imagem. */
+/* Place the anime title outside the image, above it, while keeping it inside the same card. */
+/* Coloca o título do anime fora da imagem, por cima dela, mantendo-o dentro do mesmo card. */
 .anime-card h2 {
   font-size: 16px;
   padding: 12px;
   margin: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #222;
+}
+
+/* Add spacing to each detail line inside the side panel. */
+/* Adiciona espaçamento a cada linha de detalhe dentro do painel lateral. */
+.details-panel p {
+  margin: 10px 0;
+  line-height: 1.4;
+}
+
+/* Make the selected anime title inside the panel easier to read. */
+/* Torna o título do anime selecionado dentro do painel mais fácil de ler. */
+.details-panel h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 20px;
 }
