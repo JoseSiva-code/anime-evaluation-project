@@ -1,5 +1,9 @@
 # Top Anime Project
 
+## Live Demo
+
+[View the live site](https://josesiva-code.github.io/anime-evaluation-project/)
+
 ## Project Description
 
 Top Anime Project is a dynamic web page built with HTML, CSS and JavaScript.
